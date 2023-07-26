@@ -1,12 +1,12 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 
-const RankingScreen = () => {
+const UserLoggedScreen = () => {
   return (
     <View>
-      <Text>RankingScreen</Text>
+      <Text>UserLoggedScreen</Text>
     </View>
   )
 }
 
-export default RankingScreen
+export default UserLoggedScreen
