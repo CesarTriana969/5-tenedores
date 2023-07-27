@@ -4,6 +4,7 @@ import { Image } from '@rneui/themed'
 import StyledText, { layout } from '../../../components/StyledText'
 import { useNavigation } from '@react-navigation/native'
 import { screen } from '../../../utils'
+import { LoginForm } from '../../../components/Auth';
 
 
 export function LoginScreen() {
@@ -23,12 +24,11 @@ export function LoginScreen() {
       />
 
       <View style={layout.content}>
-        <StyledText>
-          Estamos en el login
-        </StyledText>
+        <LoginForm/>
 
-        <StyledText onPress={goToRegister}>
-          Registrarse
+        <StyledText text='textRegister'>
+          ¿Aun no tienes cuenta? 
+          <StyledText btn='btnRegister' onPress={goToRegister}>Registrate</StyledText>
         </StyledText>
       </View>
 

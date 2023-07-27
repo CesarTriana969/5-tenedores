@@ -39,11 +39,19 @@ const styles = StyleSheet.create({
     description: {
         textAlign: 'center',
         marginBottom: 20,
+    },
+    textRegister:{
+        marginTop:15,
+        marginHorizontal:10
+    },
+    btnRegister:{
+        color:theme.colors.principalColor,
+        fontWeight:theme.fontWeights.bold
     }
 })
 
 
-export default function StyledText({ align, children, color, fontSize, fontWeight, title, text, style, loader, ...restOfProps }) {
+export default function StyledText({ align, children, color, fontSize, fontWeight, title, text,btn,loader, style,  ...restOfProps }) {
     const textStyles = [
         styles.text,
         align === 'center' && styles.textAlignCenter,
@@ -54,6 +62,8 @@ export default function StyledText({ align, children, color, fontSize, fontWeigh
         loader === 'loader' && styles.textLoading,
         title === 'titlePrimary' && styles.title,
         text === 'description' && styles.description,
+        text === 'textRegister' && styles.textRegister,
+        btn === 'btnRegister' && styles.btnRegister,
         style
     ]
 
