@@ -33,25 +33,29 @@ const styles = StyleSheet.create({
     title: {
         fontWeight: theme.fontWeights.bold,
         fontSize: 19,
-        marginBottom: 10,
+        marginBottom: theme.margins.mr1,
         textAlign: 'center'
     },
     description: {
         textAlign: 'center',
-        marginBottom: 20,
+        marginBottom: theme.margins.mr2,
     },
-    textRegister:{
-        marginTop:15,
-        marginHorizontal:10
+    textRegister: {
+        marginTop: 15,
+        marginHorizontal: theme.margins.mr1,
     },
-    btnRegister:{
-        color:theme.colors.principalColor,
-        fontWeight:theme.fontWeights.bold
-    }
+    btnRegister: {
+        color: theme.colors.principalColor,
+        fontWeight: theme.fontWeights.bold
+    },
+    displayName: {
+        fontWeight: theme.fontWeights.bold,
+        paddingBottom: 5,
+    },
 })
 
 
-export default function StyledText({ align, children, color, fontSize, fontWeight, title, text,btn,loader, style,  ...restOfProps }) {
+export default function StyledText({ align, children, color, fontSize, fontWeight, title, text, btn, loader, display, style, ...restOfProps }) {
     const textStyles = [
         styles.text,
         align === 'center' && styles.textAlignCenter,
@@ -64,6 +68,7 @@ export default function StyledText({ align, children, color, fontSize, fontWeigh
         text === 'description' && styles.description,
         text === 'textRegister' && styles.textRegister,
         btn === 'btnRegister' && styles.btnRegister,
+        display === 'name' && styles.displayName,
         style
     ]
 
@@ -82,7 +87,7 @@ export const layout = StyleSheet.create({
         backgroundColor: theme.colors.white,
         borderColor: theme.colors.principalColor,
         borderWidth: 2,
-        borderRadius: 10,
+        borderRadius: theme.borders.br1,
     },
     view: {
         flex: 1,
@@ -90,41 +95,64 @@ export const layout = StyleSheet.create({
         justifyContent: 'center',
     },
     contentUserGuest: {
-        marginHorizontal: 30,
+        marginHorizontal: theme.margins.mr3,
     },
     image: {
         resizeMode: 'contain',
         height: 300,
         width: '100%',
-        marginBottom: 40
+        marginBottom: theme.margins.mr4,
     },
     imgLogin: {
         resizeMode: 'contain',
         width: '100%',
         height: 150,
-        marginTop: 20,
+        marginTop: theme.margins.mr2,
     },
     btn: {
         backgroundColor: theme.colors.principalColor,
     },
+    btnLogout: {
+        marginTop: theme.margins.mr3,
+        paddingVertical:theme.paddings.pd1,
+        borderRadius: 0,
+        backgroundColor: theme.colors.white,
+        borderTopWidth: 1,
+        borderTopColor: '#e3e3e3',
+        borderBottomWidth: 1,
+        borderBottomColor: '#e3e3e3',
+    },
+    btnLogoutText:{
+        color: theme.colors.principalColor,
+    },
     btnForm: {
-        marginTop: 20,
+        marginTop: theme.margins.mr2,
         width: '95%'
     },
     content: {
-        marginHorizontal: 40,
+        marginHorizontal: theme.margins.mr4,
     },
     contentForm: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 30,
+        marginTop: theme.margins.mr3,
+    },
+    contentInfoUser: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'row',
+        paddingVertical: theme.paddings.pd3,
     },
     input: {
         width: '100%',
-        marginTop: 20
+        marginTop: theme.margins.mr2,
     },
     icon: {
         color: '#c1c1c1'
+    },
+    avatar: {
+        marginRight: theme.margins.mr2,
+        backgroundColor: theme.colors.principalColor,
     }
 });

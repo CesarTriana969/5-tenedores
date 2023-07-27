@@ -1,8 +1,4 @@
 const theme = {
-    appBar:{
-        primary:'#24292e',
-        textPrimary:'#fff'
-    },
     colors: {
         textPrimary: '#24292e',
         textSecondary: '#586069',
@@ -12,35 +8,47 @@ const theme = {
     },
     fontSizes: {
         body: 14,
-        subheading: 16
+        subheading: 16,
+        bigFontSize: 32,
+        normalFontSize: 16,
+        smallFontSize: 14,
+        smallerFontSize: 12,
     },
     fonts: {
         main: 'System'
     },
     fontWeights: {
         normal: '400',
+        semiBold: '600',
         bold: '700'
     },
-    textTransform:{
-        capitalize:'capitalize',
+    textTransform: {
+        capitalize: 'capitalize',
         uppercase: 'uppercase',
         lowercase: 'lowercase',
     },
-    margins:{
+    margins: {
         mr1: 10,
-        mr2: 16,
-        mr3: 20,
-        mr4: 26,
-        mr5: 32,
-    }
-    // layout:{
-    //     height:100,
-    //     width:200,
-    //     backgroundColor:'#fff',
-    //     borderColor:'#00a680',
-    //     borderWidth:2,
-    //     borderRadius:10,
-    // }
+        mr2: 20,
+        mr3: 30,
+        mr4: 40,
+        mr5: 50,
+    },
+    borders: {
+        br1: 10,
+        br2: 20,
+        br3: 30,
+        br4: 40,
+        br5: 50,
+    },
+    paddings:{
+        pd1: 10,
+        pd2: 20,
+        pd3: 30,
+        pd4: 40,
+        pd5: 50,
+    },
+    boxShadow: '0px 10px 100px rgba(216, 216, 216, 0.286)',
 }
 
 export default theme
