@@ -9,8 +9,11 @@ import { layout } from '../../../components/StyledText'
 
 export function UserLoggedScreen() {
 
-  const [loading, setLoading] = useState(false)
-  const [loadingText, setLoadingText] = useState('')
+  const [loading, setLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState('');
+  const [_, setReload] = useState(false);
+
+  const onReload = () => setReload((prevState) => !prevState);
 
   const logOut = async () => {
     const auth = getAuth();
@@ -21,7 +24,7 @@ export function UserLoggedScreen() {
     <View>
       <InfoUser setLoading={setLoading} setLoadingText={setLoadingText} />
 
-      <AccountOptions />
+      <AccountOptions onReload={onReload}/>
 
       <Button
         title='cerrar sesión'

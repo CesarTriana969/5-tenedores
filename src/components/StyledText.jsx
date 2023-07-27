@@ -89,6 +89,11 @@ export const layout = StyleSheet.create({
         borderWidth: 2,
         borderRadius: theme.borders.br1,
     },
+    overlayModal: {
+        height: 'auto',
+        width: '90%',
+        backgroundColor: '#fff',
+    },
     view: {
         flex: 1,
         alignItems: 'center',
@@ -114,7 +119,7 @@ export const layout = StyleSheet.create({
     },
     btnLogout: {
         marginTop: theme.margins.mr3,
-        paddingVertical:theme.paddings.pd1,
+        paddingVertical: theme.paddings.pd1,
         borderRadius: 0,
         backgroundColor: theme.colors.white,
         borderTopWidth: 1,
@@ -122,11 +127,15 @@ export const layout = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#e3e3e3',
     },
-    btnLogoutText:{
+    btnLogoutText: {
         color: theme.colors.principalColor,
     },
     btnForm: {
         marginTop: theme.margins.mr2,
+        width: '95%'
+    },
+    btnFormEdit: {
+        marginTop: theme.margins.mr1,
         width: '95%'
     },
     content: {
@@ -137,6 +146,10 @@ export const layout = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: theme.margins.mr3,
+    },
+    contentFormEdit: {
+        alignItems: 'center',
+        paddingVertical: 10
     },
     contentInfoUser: {
         alignItems: 'center',
