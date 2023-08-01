@@ -7,7 +7,7 @@ import { initialValues, validationSchema } from './ChangeDisplayNameForm.data'
 import StyledText, { layout } from '../../../components/StyledText';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
-export function ChangeDisplayNameForm({onClose, onReload}) {
+export function ChangeDisplayNameForm({ onClose, onReload }) {
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
@@ -17,7 +17,7 @@ export function ChangeDisplayNameForm({onClose, onReload}) {
         const { displayName } = formValue;
         const currentUser = getAuth().currentUser;
         await updateProfile(currentUser, { displayName });
-        
+
         onReload();
         onClose();
       } catch (error) {

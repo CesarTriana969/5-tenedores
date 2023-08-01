@@ -161,6 +161,9 @@ export const layout = StyleSheet.create({
         width: '100%',
         marginTop: theme.margins.mr2,
     },
+    inputFormEdit: {
+        marginBottom: theme.margins.mr1,
+    },
     icon: {
         color: '#c1c1c1'
     },

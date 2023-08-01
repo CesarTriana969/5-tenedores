@@ -3,11 +3,13 @@ import { View } from 'react-native'
 import { ListItem, Icon } from '@rneui/themed';
 import { map } from 'lodash';
 import { Modal } from '../../components'
-import { ChangeDisplayNameForm } from './ChangeDisplayNameForm'
+import { ChangeDisplayNameForm } from './ChangeDisplayNameForm';
+import { ChangeEmailForm } from './ChangeEmailForm';
+import { ChangePasswordForm } from './ChangePasswordForm'
 import StyledText from '../StyledText';
 
 
-export function AccountOptions({onReload}) {
+export function AccountOptions({ onReload }) {
 
   const [showModal, setShowModal] = useState(false);
   const [renderModal, setRenderModal] = useState(null);
@@ -18,13 +20,13 @@ export function AccountOptions({onReload}) {
 
   const selectComponent = (key) => {
     if (key === 'displayName') {
-      setRenderModal(<ChangeDisplayNameForm onClose={onCloseOpenModal} onReload={onReload}/>);
+      setRenderModal(<ChangeDisplayNameForm onClose={onCloseOpenModal} onReload={onReload} />);
     }
     if (key === 'email') {
-      setRenderModal();
+      setRenderModal(<ChangeEmailForm onClose={onCloseOpenModal} onReload={onReload} />);
     }
     if (key === 'password') {
-      setRenderModal();
+      setRenderModal(<ChangePasswordForm onClose={onCloseOpenModal} onReload={onReload} />);
     }
 
     onCloseOpenModal();

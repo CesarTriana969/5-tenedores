@@ -1,23 +1,23 @@
-import React, { useState } from 'react'
-import { View, Text } from 'react-native'
-import { Input, Button } from '@rneui/themed'
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useFormik } from 'formik'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import { useNavigation } from '@react-navigation/native'
-import { screen } from '../../../utils'
-import { initialValues, validationSchema } from './LoginForm.data';
-import StyledText, { layout } from '../../../components/StyledText'
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import { Input, Button, Icon } from '@rneui/themed';
+import { useFormik } from 'formik';
+import {
+  getAuth,
+  updateEmail,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
+} from 'firebase/auth';
+import { initialValues, validationSchema } from './ChangeEmailForm.data';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
+import { layout } from '../../../components/StyledText';
 
 
-export function LoginForm() {
+export function ChangeEmailForm({ onClose, onReload }) {
 
   const [showPassword, setShowPassword] = useState(false);
 
   const showHidenPassword = () => setShowPassword((prevState) => !prevState);
-
-  const navigation = useNavigation();
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -25,48 +25,44 @@ export function LoginForm() {
     validateOnChange: false,
     onSubmit: async (formValue) => {
       try {
-        const auth = getAuth();
-        await createUserWithEmailAndPassword(
-          auth,
-          formValue.email,
+        const currentUser = getAuth().currentUser;
+
+        const credentials = EmailAuthProvider.credential(
+          currentUser.email,
           formValue.password
         );
-        navigation.navigate(screen.account.account);
+        reauthenticateWithCredential(currentUser, credentials);
+
+        await updateEmail(currentUser, formValue.email);
+        
+        onReload();
+        onClose();
       } catch (error) {
-        console.log(error)
         Toast.show({
           type: 'error',
           position: 'bottom',
-          text1: 'Usuario o contraeña incorrectos.'
+          text1: 'error al actualizar'
         })
       }
-    },
+    }
   });
 
-
   return (
-    <View style={layout.contentForm}>
+    <View style={layout.contentFormEdit}>
 
       <Input
-        placeholder='email'
-        containerStyle={layout.input}
-        rightIcon={
-          <Ionicons
-            type='material-community'
-            name='at'
-            iconStyle={layout.icon}
-          />
-        }
+        placeholder='nuevo email'
+        containerStyle={layout.inputFormEdit}
         onChangeText={(text) => formik.setFieldValue('email', text)}
         errorMessage={formik.errors.email}
       />
 
       <Input
         placeholder='password'
-        containerStyle={layout.input}
+        containerStyle={layout.inputFormEdit}
         secureTextEntry={showPassword ? false : true}
         rightIcon={
-          <Ionicons
+          <Icon
             type='material-community'
             name={showPassword ? 'eye-off-outline' : 'eye-outline'}
             iconStyle={layout.icon}
@@ -78,12 +74,13 @@ export function LoginForm() {
       />
 
       <Button
-        title="Iniciar seccion"
-        containerStyle={layout.btnForm}
+        title='actualizar email'
+        containerStyle={layout.btnFormEdit}
         buttonStyle={layout.btn}
         onPress={formik.handleSubmit}
         loading={formik.isSubmitting}
       />
+
     </View>
   )
 }
