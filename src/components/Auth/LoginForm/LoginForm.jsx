@@ -7,7 +7,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { useNavigation } from '@react-navigation/native'
 import { screen } from '../../../utils'
 import { initialValues, validationSchema } from './LoginForm.data';
-import StyledText, { layout } from '../../../components/StyledText'
+import { layout } from '../../../components/StyledText'
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 

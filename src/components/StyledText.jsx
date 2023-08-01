@@ -117,6 +117,15 @@ export const layout = StyleSheet.create({
     btn: {
         backgroundColor: theme.colors.principalColor,
     },
+    btnAdd: {
+        position: 'absolute',
+        bottom: 10,
+        right: 10,
+    },
+    btnAddRestaurant: {
+        backgroundColor: theme.colors.principalColor,
+        margin: theme.margins.mr2,
+    },
     btnLogout: {
         marginTop: theme.margins.mr3,
         paddingVertical: theme.paddings.pd1,
@@ -141,11 +150,17 @@ export const layout = StyleSheet.create({
     content: {
         marginHorizontal: theme.margins.mr4,
     },
+    contentInfoForm: {
+        marginHorizontal: theme.margins.mr1,
+    },
     contentForm: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: theme.margins.mr3,
+    },
+    contentAdd: {
+        flex: 1,
     },
     contentFormEdit: {
         alignItems: 'center',
@@ -164,11 +179,21 @@ export const layout = StyleSheet.create({
     inputFormEdit: {
         marginBottom: theme.margins.mr1,
     },
+    textArea: {
+        height: 100,
+        width: '100%',
+        padding: 0,
+        margin: 0,
+    },
     icon: {
         color: '#c1c1c1'
     },
     avatar: {
         marginRight: theme.margins.mr2,
         backgroundColor: theme.colors.principalColor,
+    },
+    map: {
+        width: '100%',
+        height: 550,
     }
 });
