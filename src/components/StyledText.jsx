@@ -147,6 +147,17 @@ export const layout = StyleSheet.create({
         marginTop: theme.margins.mr1,
         width: '95%'
     },
+    btnContainerMapSave: {
+        paddingRight: 5,
+        width: '50%'
+    },
+    btnContainerMapClose: {
+        paddingLeft: 5,
+        width: '50%',
+    },
+    btnMapClse: {
+        backgroundColor: '#a60d0d',
+    },
     content: {
         marginHorizontal: theme.margins.mr4,
     },
@@ -195,5 +206,10 @@ export const layout = StyleSheet.create({
     map: {
         width: '100%',
         height: 550,
-    }
+    },
+    mapActions: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 10,
+    },
 });

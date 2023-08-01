@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
+import { Button } from '@rneui/themed'
 import * as Location from 'expo-location';
 import { Modal } from '../../../Shared';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
 import MapView from 'react-native-maps';
-import {Marker} from 'react-native-maps';
+import { Marker } from 'react-native-maps';
 import { layout } from '../../../StyledText';
 
 
-export function MapForm({ show, close }) {
+export function MapForm({ show, close, formik }) {
 
   const [location, setLocation] = useState({
     latitude: 0.001,
@@ -41,20 +42,39 @@ export function MapForm({ show, close }) {
     })();
   }, []);
 
+  const saveLocation = () => {
+    formik.setFieldValue('location', location);
+    close();
+  }
 
   return (
     <Modal show={show} close={close}>
-      <View>
-        <MapView
-          initialRegion={location}
-          showsUserLocation={true}
-          style={layout.map}
-          onRegionChange={(locationTemp) => setLocation(locationTemp)}
-        >
-          <Marker draggable coordinate={location} />
+      
+      <MapView
+        initialRegion={location}
+        showsUserLocation={true}
+        style={layout.map}
+        onRegionChange={(locationTemp) => setLocation(locationTemp)}
+      >
+        <Marker draggable coordinate={location} />
 
-        </MapView>
+      </MapView>
+
+      <View style={layout.mapActions}>
+        <Button
+          title='Save'
+          containerStyle={layout.btnContainerMapSave}
+          buttonStyle={layout.btn}
+          onPress={saveLocation}
+        />
+        <Button
+          title='Close'
+          containerStyle={layout.btnContainerMapClose}
+          buttonStyle={layout.btnMapClse}
+          onPress={close}
+        />
       </View>
+
     </Modal>
   )
 }
